@@ -58,7 +58,7 @@ namespace AdventOfCode2019.Days
                     
                     //if()
                     //{
-
+                    
                     //}
                     
                     initialPointWire2 = finalPointWire2;

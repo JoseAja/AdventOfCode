@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2019.Days
 {
@@ -18,10 +14,11 @@ namespace AdventOfCode2019.Days
             Console.WriteLine("--- Day 2: 1202 Program Alarm ---");
             Console.WriteLine("---------------------------------");
 
-            Intcode();
+            Intcode1();
+            Intcode2();
         }
         
-        private void Intcode()
+        private void Intcode1()
         {
             try
             {
@@ -29,6 +26,12 @@ namespace AdventOfCode2019.Days
                 PrintArray("Input:", array);
                 if (array.Length > 0 && !array[0].Equals("99"))
                 {
+                    if (array.Length >= 3)
+                    {
+                        array[1] = "12";
+                        array[2] = "2";
+                    }
+
                     int i = 0;
                     do
                     {
@@ -63,6 +66,86 @@ namespace AdventOfCode2019.Days
                     while (array.Length > i && array[i] != "99");
 
                     PrintArray("Output:", array);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error in Intcode(): {0}", ex.Message);
+            }
+        }
+
+        private void Intcode2()
+        {
+            try
+            {
+                string[] arrayInput = File.ReadAllText(Directory.GetCurrentDirectory() + "\\Files\\Day2-Input.txt").Split(',');
+                
+                if (arrayInput.Length > 0 && !arrayInput[0].Equals("99"))
+                {
+                    if (arrayInput.Length >= 3)
+                    {
+                        bool finish = false;
+                        for (int k = 0; k <= 99; k++)
+                        {                            
+                            for (int j = 0; j <= 99; j++)
+                            {
+                                string[] array = (string[]) arrayInput.Clone();
+                                array[1] = k.ToString(); // noun
+                                array[2] = j.ToString(); // verb
+                                int i = 0; // instruction pointer
+                                do
+                                {
+                                    if ((array[i].Equals("1") || array[i].Equals("2")) && array.Length > (i + 3))
+                                    {
+                                        int position1 = 0;
+                                        int.TryParse(array[i + 1], out position1);
+                                        int position2 = 0;
+                                        int.TryParse(array[i + 2], out position2);
+                                        int position3 = 0;
+                                        int.TryParse(array[i + 3], out position3);
+
+                                        if (array[i].Equals("1"))
+                                        {
+                                            array = Opcode1(array, position1, position2, position3);
+                                            i += 4;
+                                        }
+                                        else
+                                        {
+                                            array = Opcode2(array, position1, position2, position3);
+                                            i += 4;
+                                        }
+                                    }
+                                    else if (!array[i].Equals("1") && !array[i].Equals("2"))
+                                    {
+                                        Console.WriteLine("Something went wrong");
+                                        break;
+                                    }
+                                    else
+                                        i++;
+
+                                    if (array[0].Equals("19690720"))
+                                    {
+                                        string output = "";
+                                        output = array[0];
+                                        
+                                        Console.WriteLine("Output: {0}", output);
+                                        Console.WriteLine("noun: {0}", k);
+                                        Console.WriteLine("verb: {0}", j);
+                                        Console.WriteLine("result: {0}", ((100*k)+ j).ToString());
+                                        finish = true;
+                                    }
+                                }
+                                while (array.Length > i && array[i] != "99");
+
+                                if (finish)
+                                    break;
+                            }
+                            if (finish)
+                                break;
+
+                        }
+
+                    }   
                 }
             }
             catch (Exception ex)

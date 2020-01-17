@@ -8,3 +8,4 @@ C:\jag\AdventOfCode\AdventOfCode2019\bin\Debug\Files\Day1-Input.txt
 C:\jag\AdventOfCode\AdventOfCode2019\bin\Debug\Files\Day2-Input.txt
 C:\jag\AdventOfCode\AdventOfCode2019\bin\Debug\Files\Day4-Input.txt
 C:\jag\AdventOfCode\AdventOfCode2019\bin\Debug\Files\Day5-Input.txt
+C:\jag\AdventOfCode\AdventOfCode2019\bin\Debug\Files\Day3-Input.txt

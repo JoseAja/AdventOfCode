@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2019.Days
 {
@@ -84,8 +80,36 @@ namespace AdventOfCode2019.Days
         }
 
         private void Day1SecondPuzzle()
-        { 
-        
+        {
+            try
+            {
+                double total = 0;
+                string[] lines = File.ReadAllLines(Directory.GetCurrentDirectory() + "\\Files\\Day1-Input.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    double mass = 0;
+                    if (double.TryParse(lines[i].Trim(), out mass))
+                    {
+                        double fuel = 0;
+                        while (mass > 2)
+                        {
+                            fuel = Math.Floor(mass / 3) - 2;
+                            mass = fuel;
+                            if(fuel > 0)
+                                total += fuel;
+                        }                        
+                    }
+                    else
+                        Console.WriteLine("The module mass is incorrect.");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("the fuel requirements for all of the modules is {0}", total.ToString());
+                Console.WriteLine("");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error: {0}", ex.Message);
+            }
         }
     }
 }
