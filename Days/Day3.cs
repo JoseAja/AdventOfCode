@@ -17,6 +17,8 @@ namespace AdventOfCode2019.Days
                                                                                         {"L", new int[2] {-1, 0}}
                                                                                       };
 
+        List<int> steps = new List<int>();
+
         public Day3()
         { }
 
@@ -31,6 +33,7 @@ namespace AdventOfCode2019.Days
             {
                 int distance = CalculateMinManhattanDistance(wires);
                 PrintManhattanDistance(distance);
+                PrintBestSteps();
             }
             else
                 Console.WriteLine("Wrong input");
@@ -59,7 +62,6 @@ namespace AdventOfCode2019.Days
                 int actualDistance = Math.Abs(point[0]) + Math.Abs(point[1]); 
                 if (actualDistance < minDistance || (minDistance < 0))
                     minDistance = actualDistance;
-
             }
 
             return minDistance;
@@ -75,7 +77,10 @@ namespace AdventOfCode2019.Days
                     for (int j = 0; j < pointsWire2.Count; j++)
                     {
                         if (pointsWire1[i][0] == pointsWire2[j][0] && pointsWire1[i][1] == pointsWire2[j][1])
+                        {
                             crossings.Add(pointsWire1[i]);
+                            steps.Add(i+j+2);
+                        }
                     }
                 }
             }
@@ -89,6 +94,14 @@ namespace AdventOfCode2019.Days
                 Console.WriteLine("Manhattan distance from the central port to the closest intersection is {0}", distance);
             else
                 Console.WriteLine("No intersections");
+        }
+
+        private void PrintBestSteps()
+        {
+            if (steps.Count>0)
+                Console.WriteLine("fewest combined steps are {0}", steps.Min());
+            else
+                Console.WriteLine("No steps");
         }
 
         private List<int[]> TransformToArrayOfPoints(string[] wire)
