@@ -34,6 +34,10 @@ namespace AdventOfCode2019
             Console.WriteLine("3 --- Day 3: Crossed Wires                      ---");
             Console.WriteLine("4 --- Day 4: Secure Container                   ---");
             Console.WriteLine("5 --- Day 5: Sunny with a Chance of Asteroids   ---");
+            Console.WriteLine("6 --- Day 6: Universal Orbit Map                ---");
+            Console.WriteLine("7 --- Day 7: Amplification Circuit              ---");
+            Console.WriteLine("8 --- Day 8: Space Image Format                 ---");
+            Console.WriteLine("9 --- Day 9: Sensor Boost                       ---");
             Console.WriteLine("");
             Console.WriteLine("*********************************************************");
         }
@@ -63,14 +67,22 @@ namespace AdventOfCode2019
                     Day5 day5 = new Day5();
                     day5.Execute();
                     break;
-                    //case "6":
-                    //    break;
-                    //case "7":
-                    //    break;
-                    //case "8":
-                    //    break;
-                    //case "9":
-                    //    break;
+                case "6":
+                    Day6 day6 = new Day6();
+                    day6.Execute();
+                    break;
+                case "7":
+                    Day7 day7 = new Day7();
+                    day7.Execute();
+                    break;
+                case "8":
+                    Day8 day8 = new Day8();
+                    day8.Execute();
+                    break;
+                case "9":
+                    Day9 day9 = new Day9();
+                    day9.Execute();
+                    break;
                     //case "10":
                     //    break;
                     //case "11":
