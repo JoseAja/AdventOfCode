@@ -41,9 +41,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Days\Day1.cs" />
+    <Compile Include="Days\Day10.cs" />
+    <Compile Include="Days\Day11.cs" />
+    <Compile Include="Days\Day12.cs" />
+    <Compile Include="Days\Day13.cs" />
+    <Compile Include="Days\Day14.cs" />
     <Compile Include="Days\Day2.cs" />
     <Compile Include="Days\Day3.cs" />
     <Compile Include="Days\Day4.cs" />
@@ -59,6 +65,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\Day10-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Day11-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Day12-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Day13-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Day14-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\Day3-Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -83,8 +104,15 @@
     <Content Include="Files\Day8-Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\Day9-Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Puzzles\Day1.txt" />
     <Content Include="Puzzles\Day10.txt" />
+    <Content Include="Puzzles\Day11.txt" />
+    <Content Include="Puzzles\Day12.txt" />
+    <Content Include="Puzzles\Day13.txt" />
+    <Content Include="Puzzles\Day14.txt" />
     <Content Include="Puzzles\Day2.txt" />
     <Content Include="Puzzles\Day3.txt" />
     <Content Include="Puzzles\Day4.txt" />
