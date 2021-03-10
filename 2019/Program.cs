@@ -14,9 +14,15 @@ namespace AdventOfCode2019
             {
                 option = Console.ReadLine();
                 programExecuted = LoadPuzzles(option);
+                if (!programExecuted)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("*********************************************************");
+                    Console.WriteLine("Choose another number to execute the puzzles of the day");
+                    Console.WriteLine("*********************************************************");
+                }
             }
             while (!programExecuted);
-            Console.ReadLine();
         }
 
         static private void WriteIntroduction()
@@ -39,12 +45,14 @@ namespace AdventOfCode2019
             Console.WriteLine("12 --- Day 12: The N-Body Problem                ---");
             Console.WriteLine("13 --- Day 13: Care Package                      ---");
             Console.WriteLine("14 --- Day 14: Space Stoichiometry               ---");
+            Console.WriteLine("q  --- Exit program                              ---");
             Console.WriteLine("");
             Console.WriteLine("*********************************************************");
         }
 
         static private bool LoadPuzzles(string option)
         {
+            bool finish = false;
             switch (option)
             {
                 case "1":
@@ -103,8 +111,12 @@ namespace AdventOfCode2019
                     Day14 day14 = new Day14();
                     day14.Execute();
                     break;
+                case "q":
+                case "Q":
+                    finish = true;
+                    break;
             }
-            return true;
+            return finish;
         }
     }
 }

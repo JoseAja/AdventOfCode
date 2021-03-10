@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventOfCode2019.classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -6,7 +7,7 @@ namespace AdventOfCode2019.Days
 {
     class Day7
     {
-        private int maximum = 0;
+        private Int64 maximum = 0;
         bool FirstTime = true;
 
         public void Execute()
@@ -26,7 +27,7 @@ namespace AdventOfCode2019.Days
             maximum = 0;
         }
 
-        private void CalculateMaximum(int input)
+        private void CalculateMaximum(Int64 input)
         {
             int minPhase = 0;
             int maxPhase = 5;
@@ -51,11 +52,11 @@ namespace AdventOfCode2019.Days
                                         {
                                             if (e != a && e != b && e != c && e != d)
                                             {
-                                                ResultOpcode ResultoutputA = ExecuteAmplifier(false, (string[])originalArray.Clone(), "A", a, new List<int>() { a, input });
-                                                ResultOpcode ResultoutputB = ExecuteAmplifier(false, (string[])originalArray.Clone(), "B", b, new List<int>() { b, ResultoutputA.output });
-                                                ResultOpcode ResultoutputC = ExecuteAmplifier(false, (string[])originalArray.Clone(), "C", c, new List<int>() { c, ResultoutputB.output });
-                                                ResultOpcode ResultoutputD = ExecuteAmplifier(false, (string[])originalArray.Clone(), "D", d, new List<int>() { d, ResultoutputC.output });
-                                                ResultOpcode ResultoutputE = ExecuteAmplifier(false, (string[])originalArray.Clone(), "E", e, new List<int>() { e, ResultoutputD.output });
+                                                ResultOpcode ResultoutputA = ExecuteAmplifier(false, (string[])originalArray.Clone(), "A", a, new List<Int64>() { a, input });
+                                                ResultOpcode ResultoutputB = ExecuteAmplifier(false, (string[])originalArray.Clone(), "B", b, new List<Int64>() { b, ResultoutputA.output });
+                                                ResultOpcode ResultoutputC = ExecuteAmplifier(false, (string[])originalArray.Clone(), "C", c, new List<Int64>() { c, ResultoutputB.output });
+                                                ResultOpcode ResultoutputD = ExecuteAmplifier(false, (string[])originalArray.Clone(), "D", d, new List<Int64>() { d, ResultoutputC.output });
+                                                ResultOpcode ResultoutputE = ExecuteAmplifier(false, (string[])originalArray.Clone(), "E", e, new List<Int64>() { e, ResultoutputD.output });
                                             }
                                         }
                                     }
@@ -67,11 +68,11 @@ namespace AdventOfCode2019.Days
             }
         }
 
-        List<int> inputarrayALoop = new List<int>();
-        List<int> inputarrayBLoop = new List<int>();
-        List<int> inputarrayCLoop = new List<int>();
-        List<int> inputarrayDLoop = new List<int>();
-        List<int> inputarrayELoop = new List<int>();
+        List<Int64> inputarrayALoop = new List<Int64>();
+        List<Int64> inputarrayBLoop = new List<Int64>();
+        List<Int64> inputarrayCLoop = new List<Int64>();
+        List<Int64> inputarrayDLoop = new List<Int64>();
+        List<Int64> inputarrayELoop = new List<Int64>();
 
         string[] arrayALoop = null;
         string[] arrayBLoop = null;
@@ -79,11 +80,11 @@ namespace AdventOfCode2019.Days
         string[] arrayDLoop = null;
         string[] arrayELoop = null;
 
-        int stateA = 0;
-        int stateB = 0;
-        int stateC = 0;
-        int stateD = 0;
-        int stateE = 0;
+        Int64 stateA = 0;
+        Int64 stateB = 0;
+        Int64 stateC = 0;
+        Int64 stateD = 0;
+        Int64 stateE = 0;
 
         private void CalculateMaximumWithLoop()
         {
@@ -123,7 +124,7 @@ namespace AdventOfCode2019.Days
             catch { }
         }
 
-        private void StartAmplifier(int input, int a, int b, int c, int d, int e)
+        private void StartAmplifier(Int64 input, int a, int b, int c, int d, int e)
         {
             try
             {
@@ -136,12 +137,12 @@ namespace AdventOfCode2019.Days
                     arrayALoop = (string[])originalArray.Clone();
                     if (inputarrayALoop.Count == 0)
                     {
-                        inputarrayALoop = new List<int>() { a };
+                        inputarrayALoop = new List<Int64>() { a };
                         inputarrayALoop.Add(input);
                     }
                 }
                 else
-                    inputarrayALoop = new List<int>() { input };
+                    inputarrayALoop = new List<Int64>() { input };
 
                 ResultOpcode ResultoutputA = ExecuteAmplifier(true, arrayALoop, "A", a, inputarrayALoop, stateA);
                 stateA = ResultoutputA.state;
@@ -152,13 +153,13 @@ namespace AdventOfCode2019.Days
                     arrayBLoop = (string[])originalArray.Clone();
                     if (inputarrayBLoop.Count == 0)
                     {
-                        inputarrayBLoop = new List<int>() { b };
+                        inputarrayBLoop = new List<Int64>() { b };
                         inputarrayBLoop.Add(ResultoutputA.output);
                     }
 
                 }
                 else
-                    inputarrayBLoop = new List<int>() { ResultoutputA.output };
+                    inputarrayBLoop = new List<Int64>() { ResultoutputA.output };
 
                 ResultOpcode ResultoutputB = ExecuteAmplifier(true, arrayBLoop, "B", b, inputarrayBLoop, stateB);
                 stateB = ResultoutputB.state;
@@ -169,12 +170,12 @@ namespace AdventOfCode2019.Days
                     arrayCLoop = (string[])originalArray.Clone();
                     if (inputarrayCLoop.Count == 0)
                     {
-                        inputarrayCLoop = new List<int>() { c };
+                        inputarrayCLoop = new List<Int64>() { c };
                         inputarrayCLoop.Add(ResultoutputB.output);
                     }
                 }
                 else
-                    inputarrayCLoop = new List<int>() { ResultoutputB.output };
+                    inputarrayCLoop = new List<Int64>() { ResultoutputB.output };
 
                 ResultOpcode ResultoutputC = ExecuteAmplifier(true, arrayCLoop, "C", c, inputarrayCLoop, stateC);
                 stateC = ResultoutputC.state;
@@ -185,12 +186,12 @@ namespace AdventOfCode2019.Days
                     arrayDLoop = (string[])originalArray.Clone();
                     if (inputarrayDLoop.Count == 0)
                     {
-                        inputarrayDLoop = new List<int>() { d };
+                        inputarrayDLoop = new List<Int64>() { d };
                         inputarrayDLoop.Add(ResultoutputC.output);
                     }
                 }
                 else
-                    inputarrayDLoop = new List<int>() { ResultoutputC.output };
+                    inputarrayDLoop = new List<Int64>() { ResultoutputC.output };
 
                 ResultOpcode ResultoutputD = ExecuteAmplifier(true, arrayDLoop, "D", d, inputarrayDLoop, stateD);
                 stateD = ResultoutputD.state;
@@ -201,12 +202,12 @@ namespace AdventOfCode2019.Days
                     arrayELoop = (string[])originalArray.Clone();
                     if (inputarrayELoop.Count == 0)
                     {
-                        inputarrayELoop = new List<int>() { e };
+                        inputarrayELoop = new List<Int64>() { e };
                         inputarrayELoop.Add(ResultoutputD.output);
                     }
                 }
                 else
-                    inputarrayELoop = new List<int>() { ResultoutputD.output };
+                    inputarrayELoop = new List<Int64>() { ResultoutputD.output };
 
                 ResultOpcode ResultoutputE = ExecuteAmplifier(true, arrayELoop, "E", e, inputarrayELoop, stateE);
                 stateE = ResultoutputE.state;
@@ -219,25 +220,25 @@ namespace AdventOfCode2019.Days
                     FirstTime = true;
 
                     stateE = 0;
-                    inputarrayELoop = new List<int>();
+                    inputarrayELoop = new List<Int64>();
 
                     stateD = 0;
-                    inputarrayDLoop = new List<int>();
+                    inputarrayDLoop = new List<Int64>();
 
                     stateC = 0;
-                    inputarrayCLoop = new List<int>();
+                    inputarrayCLoop = new List<Int64>();
 
                     stateB = 0;
-                    inputarrayBLoop = new List<int>();
+                    inputarrayBLoop = new List<Int64>();
 
                     stateA = 0;
-                    inputarrayALoop = new List<int>();
+                    inputarrayALoop = new List<Int64>();
                 }
             }
             catch (Exception ex) { }
         }
        
-        private ResultOpcode ExecuteAmplifier(bool isLoopMode, string[] array, string amplifierName, int phase, List<int> input, int state = 0)
+        private ResultOpcode ExecuteAmplifier(bool isLoopMode, string[] array, string amplifierName, int phase, List<Int64> input, Int64 state = 0)
         {
             ResultOpcode result = new ResultOpcode();
             bool isPhaseNumber = true;
@@ -249,8 +250,8 @@ namespace AdventOfCode2019.Days
             }
             if (isPhaseNumber && ((isLoopMode && (phase < 10) && (phase >= 5)) || (!isLoopMode && (phase < 5) && (phase >= 0))))
             {
-                Day5 day5 = new Day5();
-                result = day5.IntcodeExtended(array, input, state);
+                IntcodeProgram intcodeProgram = new IntcodeProgram();
+                result = intcodeProgram.IntcodeExtended(array, input, state);
                 
                 if (amplifierName.Equals("E") && result.output > maximum)
                     maximum = result.output;
